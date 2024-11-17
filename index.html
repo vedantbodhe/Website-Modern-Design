@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Website</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Cookie Consent Banner -->
+<div id="cookie-banner" class="cookie-banner">
+    <h2>Cookie Settings</h2>
+    <p>
+        We use cookies to improve your browsing experience. <br>By clicking "Accept All," you agree to the use of
+        all cookies.
+        <br>Click "Essential Only" to allow only necessary cookies, or "Manage Settings" to customize your
+        preferences.
+    </p>
+    <div class="actions">
+        <button id="settings-btn" class="settings-btn">Manage Settings</button>
+        <button id="essential-btn" class="essential-btn">Essential Only</button>
+        <button id="accept-btn" class="accept-btn">Accept All</button>
+    </div>
+    <br>
+    <div class="powered-by">
+        Powered by Minimalistic Consent Management
+    </div>
+</div>
+
+<!-- Manage Settings Submenu -->
+<div id="settings-menu" class="settings-menu hidden">
+    <h2>Privacy Settings</h2>
+    <p>
+        Customize your preferences for cookies. You can select which types of cookies you want to allow.
+    </p>
+    <div class="categories">
+        <div class="category">
+            <span>Marketing</span>
+            <label class="switch">
+                <input type="checkbox" id="marketing-toggle" checked>
+                <span class="slider round"></span>
+            </label>
+            <p>These cookies are used by advertisers to show ads relevant to your interests.</p>
+        </div>
+        <div class="category">
+            <span>Functional</span>
+            <label class="switch">
+                <input type="checkbox" id="functional-toggle" checked>
+                <span class="slider round"></span>
+            </label>
+            <p>These cookies help us analyze website usage and improve its performance.</p>
+        </div>
+        <div class="category">
+            <span>Essential</span>
+            <label class="switch">
+                <input type="checkbox" id="essential-toggle" checked disabled>
+                <span class="slider round"></span>
+            </label>
+            <p>These cookies are required to enable the core functionality of the website.</p>
+        </div>
+    </div>
+    <div class="actions">
+        <button id="save-settings-btn" class="save-settings-btn">Save Settings</button>
+        <button id="cancel-settings-btn" class="cancel-settings-btn">Cancel</button>
+    </div>
+</div>
+    
+    <!-- Navbar -->
+<div id="main-content" class="hidden">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
+        <div class="container">
+            <a class="navbar-brand" href="#">MODERN</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#top">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#info">Info</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div id="hero-carousel" class="carousel slide hero-carousel" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="img/gallery-img-01.jpg" class="d-block w-100" alt="Golden Gate Bridge">
+                <div class="carousel-caption">
+                    <h5>Golden Gate Bridge, San Francisco</h5>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="img/gallery-img-02.jpg" class="d-block w-100" alt="The Andes Mountains">
+                <div class="carousel-caption">
+                    <h5>The Andes Mountains</h5>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#hero-carousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#hero-carousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <!-- Info Section -->
+    <section id="info" class="py-5">
+        <div class="container">
+            <div class="text-center mb-4">
+                <h2>Why Modernism?</h2>
+                <p class="text-muted">Explore the beauty of modern design.</p>
+            </div>
+            <div class="row g-4">
+                <!-- Card 1: Sophisticated Aesthetics -->
+                <div class="col-md-4">
+                    <div class="info-card p-4 text-center bg-white">
+                        <!-- Icon: Paint Brush -->
+                        <i class="fas fa-paint-brush fa-3x mb-3 text-primary"></i>
+                        <h5>Sophisticated Aesthetics</h5>
+                        <p>Modernistic website themes combine contemporary design elements like bold typography, dynamic visuals, and gradient color schemes to create a polished and cutting-edge look.</p>
+                    </div>
+                </div>
+                <!-- Card 2: Innovative Interactivity -->
+                <div class="col-md-4">
+                    <div class="info-card p-4 text-center bg-white">
+                        <!-- Icon: Magic Wand -->
+                        <i class="fas fa-magic fa-3x mb-3 text-warning"></i>
+                        <h5>Innovative Interactivity</h5>
+                        <p>Themes like these often include advanced features such as animations, micro-interactions, and seamless transitions, enhancing user engagement and delivering a unique browsing experience.</p>
+                    </div>
+                </div>
+                <!-- Card 3: Functionality Meets Style -->
+                <div class="col-md-4">
+                    <div class="info-card p-4 text-center bg-white">
+                        <!-- Icon: Mobile Screen -->
+                        <i class="fas fa-mobile-alt fa-3x mb-3 text-success"></i>
+                        <h5>Functionality Meets Style</h5>
+                        <p>With a focus on responsive design and intuitive layouts, modernistic themes ensure compatibility across devices while maintaining a visually striking and user-friendly interface.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="contact-section">
+                        <h3>Contact Us</h3>
+                        <form>
+                            <div class="mb-3">
+                                <input type="text" class="form-control" placeholder="Your Name" required>
+                            </div>
+                            <div class="mb-3">
+                                <input type="email" class="form-control" placeholder="Your Email" required>
+                            </div>
+                            <div class="mb-3">
+                                <textarea class="form-control" rows="4" placeholder="Your Message" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <img src="img/alina-grubnyak-R84Oy89aNKs-unsplash.jpg" class="img-fluid rounded" alt="Contact Image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer text-center">
+        <div class="container">
+            <p class="mb-0">© 2024 Modern Minimalistic Design. All Rights Reserved.</p>
+            <p>Designed by <a href="#">Vedant Bodhe</a></p>
+        </div>
+    </footer>
+</div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- External JS -->
+    <script src="script.js"></script>
+</body>
+
+</html>

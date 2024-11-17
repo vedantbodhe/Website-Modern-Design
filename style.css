@@ -1,0 +1,205 @@
+/* UEBERGREIFEND */
+
+/* General Body Style */
+body {
+    font-family: 'Lexend', Arial, sans-serif; /* Use Lexend font with Arial fallback */
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-color: #f9f9f9;
+    color: #333;
+    overflow: hidden; /* Prevent scrolling when the cookie banner is displayed */
+}
+
+/* Navbar Styles */
+.navbar-brand {
+    font-weight: 800;
+    font-size: 1.5rem;
+}
+
+/* Button Styles */
+button {
+    font-family: 'Lexend', sans-serif;
+    font-weight: 500; /* Medium weight for buttons */
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+/* Hidden Elements */
+.hidden {
+    display: none;
+}
+
+/* Allow scrolling once the banner is dismissed */
+.hidden + #main-content {
+    overflow: auto; /* Enable scrolling on main content */
+}
+
+/* CONSENT BANNER RELATED */
+
+/* Cookie Banner and Settings Menu */
+.cookie-banner, .settings-menu {
+    max-width: 500px;
+    padding: 20px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+
+    /* Center the banner on the screen */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999; /* Ensure the banner is above other content */
+}
+
+/* Banner Heading */
+.cookie-banner h2, .settings-menu h2 {
+    font-family: 'Lexend', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700; /* Use bold weight for headings */
+    margin-top: 0;
+    color: #333;
+}
+
+/* Banner Text */
+.cookie-banner p, .settings-menu p {
+    font-family: 'Lexend', sans-serif;
+    font-size: 1rem;
+    font-weight: 400; /* Regular weight for paragraphs */
+    margin: 10px 0;
+    color: #666;
+}
+
+/* Actions Section (Buttons within Banner and Settings Menu) */
+.actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+/* Specific Button Colors for Banner */
+.settings-btn {
+    background-color: #eaeaea;
+    color: #333;
+}
+
+.essential-btn {
+    background-color: #c0392b;
+    color: white;
+}
+
+.accept-btn {
+    background-color: #27ae60;
+    color: white;
+}
+
+.save-settings-btn {
+    background-color: #27ae60;
+    color: white;
+}
+
+.cancel-settings-btn {
+    background-color: #c0392b;
+    color: white;
+}
+
+/* Toggle Switch Styles */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 34px;
+    height: 20px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 20px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 14px;
+    width: 14px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #27ae60;
+}
+
+input:checked + .slider:before {
+    transform: translateX(14px);
+}
+
+/* MAIN CONTENT RELATED */
+
+/* Hero Carousel */
+.hero-carousel img {
+    height: 60vh;
+    object-fit: cover;
+}
+
+/* Info Card Styles */
+.info-card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Contact Section */
+.contact-section {
+    background: #f8f9fa;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer */
+.footer {
+    background: #222;
+    color: #fff;
+    padding: 20px 0;
+}
+
+.footer a {
+    color: #00bcd4;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
