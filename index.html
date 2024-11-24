@@ -16,19 +16,24 @@
 </head>
 
 <body>
-    <!-- Cookie Consent Banner -->
+<!-- Cookie Consent Banner: First Layer -->
 <div id="cookie-banner" class="cookie-banner">
     <h2>Cookie Settings</h2>
     <p>
-        We use cookies to improve your browsing experience. <br>By clicking "Accept All," you agree to the use of
-        all cookies.
-        <br>Click "Essential Only" to allow only necessary cookies, or "Manage Settings" to customize your
-        preferences.
+        We use cookies to improve your browsing experience. <br>Click "Accept All" to enable all cookies and unlock the full experience.
+        <br>Click "Manage Settings" to explore other options.
     </p>
     <div class="actions">
-        <button id="settings-btn" class="settings-btn">Manage Settings</button>
-        <button id="essential-btn" class="essential-btn">Essential Only</button>
-        <button id="accept-btn" class="accept-btn">Accept All</button>
+        <!-- Prominent "Accept All" button -->
+        <button id="accept-btn" class="accept-btn btn btn-primary btn-lg">
+            Accept All
+        </button>
+        
+        <!-- "Essential Only" option removed from the first layer -->
+        <!-- Subtle "Manage Settings" button -->
+        <button id="settings-btn" class="settings-btn btn btn-outline-secondary">
+            Manage Settings
+        </button>
     </div>
     <br>
     <div class="powered-by">
@@ -36,11 +41,11 @@
     </div>
 </div>
 
-<!-- Manage Settings Submenu -->
+<!-- Cookie Consent Banner: Second Layer -->
 <div id="settings-menu" class="settings-menu hidden">
     <h2>Privacy Settings</h2>
     <p>
-        Customize your preferences for cookies. You can select which types of cookies you want to allow.
+        Customize your preferences for cookies. You can select which types of cookies you want to allow. If you don't wish to accept cookies, click "Decline All."
     </p>
     <div class="categories">
         <div class="category">
@@ -69,11 +74,19 @@
         </div>
     </div>
     <div class="actions">
-        <button id="save-settings-btn" class="save-settings-btn">Save Settings</button>
-        <button id="cancel-settings-btn" class="cancel-settings-btn">Cancel</button>
+        <!-- "Decline All" button moved to second layer -->
+        <button id="essential-btn" class="essential-btn btn btn-outline-danger">
+            Decline All
+        </button>
+        <button id="save-settings-btn" class="save-settings-btn btn btn-success">
+            Save Settings
+        </button>
+        <button id="cancel-settings-btn" class="cancel-settings-btn btn btn-outline-secondary">
+            Go Back
+        </button>
     </div>
 </div>
-    
+
     <!-- Navbar -->
 <div id="main-content" class="hidden">
     <nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
