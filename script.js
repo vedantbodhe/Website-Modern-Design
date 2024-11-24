@@ -86,11 +86,21 @@ document.getElementById('settings-btn').addEventListener('click', () => {
 // Save Settings in Submenu
 document.getElementById('save-settings-btn').addEventListener('click', () => {
     alert('Your cookie preferences have been saved.');
+
+    // Log the state of each toggle
+    const marketingStatus = document.getElementById('marketing-toggle').checked ? 'Enabled' : 'Disabled';
+    const functionalStatus = document.getElementById('functional-toggle').checked ? 'Enabled' : 'Disabled';
+
+    // Log each toggle's state
+    logAction(`Marketing Cookies ${marketingStatus}`);
+    logAction(`Functional Cookies ${functionalStatus}`);
+
+    logAction('Save Preferences'); // Log action
+    sendUserActionsToGoogleSheet(); // Send to Google Sheets
+
     document.getElementById('settings-menu').classList.add('hidden'); // Hide settings menu
     document.getElementById('main-content').classList.remove('hidden'); // Show main content
     enableScrolling(); // Enable scrolling
-    logAction('Save Preferences'); // Log action
-    sendUserActionsToGoogleSheet(); // Send to Google Sheets
 });
 
 // Cancel Settings in Submenu
@@ -98,13 +108,13 @@ document.getElementById('cancel-settings-btn').addEventListener('click', () => {
     document.getElementById('settings-menu').classList.add('hidden'); // Hide settings menu
     document.getElementById('cookie-banner').classList.remove('hidden'); // Show banner again
     disableScrolling(); // Keep scrolling disabled
-    logAction('Cancel Settings'); // Log action
+    logAction('Go Back clicked'); // Log action
     sendUserActionsToGoogleSheet(); // Send to Google Sheets
 });
 
 // TOGGLE EVENTS
 
-document.getElementById('marketing-toggle').addEventListener('change', (event) => {
+/* document.getElementById('marketing-toggle').addEventListener('change', (event) => {
     const status = event.target.checked ? 'Enabled' : 'Disabled';
     logAction(`Marketing Cookies ${status}`);
     sendUserActionsToGoogleSheet(); // Send updated action to Google Sheets
@@ -114,7 +124,7 @@ document.getElementById('functional-toggle').addEventListener('change', (event) 
     const status = event.target.checked ? 'Enabled' : 'Disabled';
     logAction(`Functional Cookies ${status}`);
     sendUserActionsToGoogleSheet(); // Send updated action to Google Sheets
-});
+}); */
 
 // TRACK PAGE RELOAD
 
