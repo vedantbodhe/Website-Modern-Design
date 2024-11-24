@@ -1,3 +1,6 @@
+// Replace with your Google Apps Script Web App URL
+const googleAppsScriptURL = 'https://script.google.com/macros/s/AKfycbxCxABmscVo6qcENRr-RhXYKe0r0j0gwBgOCB49klYSIUfcQE3XDGU1onnp1flYTzPX/exec';
+
 // UEBERGREIFEND
 
 // Helper function to enable scrolling
@@ -23,20 +26,20 @@ function logAction(action) {
     console.log(`Action logged: ${action} at ${timestamp} for ${sessionId}`);
 }
 
-// Function to send user actions to Google Sheets via SheetDB
+// Function to send user actions to Google Apps Script
 function sendUserActionsToGoogleSheet() {
     if (userActions.length === 0) return; // Avoid sending empty data
-    fetch('https://sheetdb.io/api/v1/vuij3b4yk2tn8', {
+    fetch(googleAppsScriptURL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(userActions)
     })
         .then(response => {
             if (response.ok) {
-                console.log('Data sent to Google Sheets via SheetDB');
+                console.log('Data sent to Google Sheets via Google Apps Script');
                 userActions = []; // Clear actions after sending
             } else {
-                console.error('Failed to send data to Google Sheets via SheetDB');
+                console.error('Failed to send data to Google Sheets via Google Apps Script');
             }
         })
         .catch(error => console.error('Error:', error));
@@ -57,11 +60,10 @@ document.getElementById('accept-btn').addEventListener('click', () => {
 // Handle Decline All button
 document.getElementById('essential-btn').addEventListener('click', () => {
     alert('Cookies declined, essential only.');
-    // Turn off Functional and Marketing toggles
     document.getElementById('functional-toggle').checked = false;
     document.getElementById('marketing-toggle').checked = false;
 
-    document.getElementById('settings-menu').classList.add('hidden'); // Hide banner
+    document.getElementById('cookie-banner').classList.add('hidden'); // Hide banner
     document.getElementById('main-content').classList.remove('hidden'); // Show main content
     enableScrolling(); // Enable scrolling
 
@@ -70,8 +72,6 @@ document.getElementById('essential-btn').addEventListener('click', () => {
     logAction('Cookies declined, essential only'); // Log action
     sendUserActionsToGoogleSheet(); // Send to Google Sheets
 });
-
-// SETTINGS MENU
 
 // Manage Settings Submenu
 document.getElementById('settings-btn').addEventListener('click', () => {
@@ -87,11 +87,9 @@ document.getElementById('settings-btn').addEventListener('click', () => {
 document.getElementById('save-settings-btn').addEventListener('click', () => {
     alert('Your cookie preferences have been saved.');
 
-    // Log the state of each toggle
     const marketingStatus = document.getElementById('marketing-toggle').checked ? 'Enabled' : 'Disabled';
     const functionalStatus = document.getElementById('functional-toggle').checked ? 'Enabled' : 'Disabled';
 
-    // Log each toggle's state
     logAction(`Marketing Cookies ${marketingStatus}`);
     logAction(`Functional Cookies ${functionalStatus}`);
 
@@ -112,23 +110,7 @@ document.getElementById('cancel-settings-btn').addEventListener('click', () => {
     sendUserActionsToGoogleSheet(); // Send to Google Sheets
 });
 
-// TOGGLE EVENTS
-
-/* document.getElementById('marketing-toggle').addEventListener('change', (event) => {
-    const status = event.target.checked ? 'Enabled' : 'Disabled';
-    logAction(`Marketing Cookies ${status}`);
-    sendUserActionsToGoogleSheet(); // Send updated action to Google Sheets
-});
-
-document.getElementById('functional-toggle').addEventListener('change', (event) => {
-    const status = event.target.checked ? 'Enabled' : 'Disabled';
-    logAction(`Functional Cookies ${status}`);
-    sendUserActionsToGoogleSheet(); // Send updated action to Google Sheets
-}); */
-
 // TRACK PAGE RELOAD
-
-// Log reloads and send them to Google Sheets
 window.addEventListener('beforeunload', (event) => {
     logAction('Page Reload');
     sendUserActionsToGoogleSheet(); // Send user actions before the page reloads or exits
