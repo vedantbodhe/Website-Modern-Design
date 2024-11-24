@@ -111,7 +111,7 @@ button:hover {
 }
 
 .cancel-settings-btn {
-    background-color: #c0392b;
+    background-color: #756e6d;
     color: white;
 }
 
@@ -127,6 +127,16 @@ button:hover {
     opacity: 0;
     width: 0;
     height: 0;
+}
+
+.switch input:disabled + .slider {
+    background-color: #ccc; /* Grey background for the slider */
+    cursor: not-allowed; /* Change cursor to indicate it is not clickable */
+    opacity: 0.7; /* Reduce opacity to give a "disabled" effect */
+}
+
+.switch input:disabled + .slider:before {
+    background-color: #999; /* Grey for the knob */
 }
 
 .slider {
