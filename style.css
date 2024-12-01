@@ -1,14 +1,20 @@
-/* UEBERGREIFEND */
-
 /* General Body Style */
 body {
     font-family: 'Lexend', Arial, sans-serif; /* Use Lexend font with Arial fallback */
     margin: 0;
     padding: 0;
     height: 100vh;
+    display: flex; /* Use Flexbox to align children vertically */
+    flex-direction: column; /* Stack elements (header, main-content, footer) in a column */
     background-color: #f9f9f9;
     color: #333;
     overflow: hidden; /* Prevent scrolling when the cookie banner is displayed */
+}
+
+/* Main Content Wrapper */
+#main-content {
+    flex: 1; /* Allow the main content to grow and take up available space */
+    padding: 20px; /* Optional: spacing for content */
 }
 
 /* Navbar Styles */
@@ -28,7 +34,6 @@ button {
     cursor: pointer;
     transition: background-color 0.2s ease;
     max-width: 100%; /* Prevent buttons from growing too wide */
-    flex: 1;
 }
 
 button:hover {
@@ -40,15 +45,28 @@ button:hover {
     display: none;
 }
 
-/* Allow scrolling once the banner is dismissed */
-.hidden + #main-content {
-    overflow: auto; /* Enable scrolling on main content */
+/* Footer */
+.footer {
+    background: #222; /* Footer background color */
+    color: #fffffe; /* Footer text color */
+    padding: 20px 0; /* Vertical padding */
+    text-align: center; /* Ensure centered text */
+    box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.3); /* Optional: subtle shadow for separation */
+    font-family: 'Lexend', Arial, sans-serif;
 }
 
-/* CONSENT BANNER RELATED */
+.footer a {
+    color: #00bcd4;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
 
 /* Cookie Banner and Settings Menu */
 .cookie-banner, .settings-menu {
+    font-family: 'Lexend', sans-serif;
     width: 90%; /* Make it responsive to viewport width */
     max-width: 500px; /* Limit the maximum width */
     height: auto; /* Automatically adjust height */
@@ -178,50 +196,6 @@ input:checked + .slider {
 
 input:checked + .slider:before {
     transform: translateX(14px);
-}
-
-/* MAIN CONTENT RELATED */
-
-/* Hero Carousel */
-.hero-carousel img {
-    height: 60vh;
-    object-fit: cover;
-    max-width: 100%; /* Ensure images are responsive */
-}
-
-/* Info Card Styles */
-.info-card {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    transition: transform 0.3s ease;
-}
-
-.info-card:hover {
-    transform: translateY(-5px);
-}
-
-/* Contact Section */
-.contact-section {
-    background: #f8f9fa;
-    padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
-
-/* Footer */
-.footer {
-    background: #222;
-    color: #fff;
-    padding: 20px 0;
-}
-
-.footer a {
-    color: #00bcd4;
-    text-decoration: none;
-}
-
-.footer a:hover {
-    text-decoration: underline;
 }
 
 /* MEDIA QUERY FOR SMALL SCREENS */
