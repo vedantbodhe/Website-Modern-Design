@@ -92,29 +92,161 @@
     </div>
 </div>
 
-    <!-- Navbar -->
+  <!-- Navbar -->
 <div id="main-content" class="hidden">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
-        <div class="container">
-            <a class="navbar-brand" href="#">MODERN</a>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                MODERN 
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#top">Home</a>
+                        <a class="nav-link" href="#top">
+                            <i class="fas fa-home"></i> Home
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#info">Info</a>
+                        <a class="nav-link" href="#info">
+                            <i class="fas fa-info-circle"></i> Info
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#contact">Contact</a>
+                        <a class="nav-link" href="#contact">
+                            <i class="fas fa-envelope"></i> Contact
+                        </a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
+</div>
+
+<!-- Include Font Awesome -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+<style>
+    /* Navbar General Styles */
+    .navbar {
+        width: 100%;
+        padding: 0.5rem 1rem; /* Adjust padding for a cleaner layout */
+        background: #fafafa; 
+    }
+
+    /* Navbar Brand Styling */
+    .navbar-brand {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    /* Navbar Link Styling */
+    .navbar-nav .nav-link {
+        font-size: 1.1rem;
+        color: #fff;
+        transition: color 0.3s, transform 0.3s;
+    }
+
+    .navbar-nav .nav-link:hover {
+        color: #ffc107;
+        transform: translateY(-2px);
+        text-shadow: 0px 0px 6px rgba(255, 193, 7, 0.8);
+    }
+
+    /* Active Link Styling */
+    .navbar-nav .nav-link.active {
+        color: #ffc107;
+        font-weight: bold;
+        border-bottom: 2px solid #ffc107;
+    }
+
+    /* Mobile Navbar Dropdown */
+    
+
+    /* Navbar Toggler */
+    .navbar-toggler-icon {
+        filter: invert(1);
+    }
+</style>
+
+<script>
+    // Smooth Scrolling for Anchor Links
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').slice(1);
+            document.getElementById(targetId).scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        });
+    });
+
+    // Scroll Spy to Highlight Active Link
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.nav-link');
+    window.addEventListener('scroll', () => {
+        let currentSection = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 60; // Offset for fixed navbar
+            const sectionHeight = section.offsetHeight;
+            if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                currentSection = section.getAttribute('id');
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href').slice(1) === currentSection) {
+                link.classList.add('active');
+            }
+        });
+    });
+
+    let lastScrollY = window.scrollY;
+const navbar = document.querySelector('.navbar');
+
+window.addEventListener('scroll', () => {
+    const currentScrollY = window.scrollY;
+
+    // Show navbar when at the top of the page
+    if (currentScrollY === 0) {
+        navbar.style.transform = 'translateY(0)';
+        return;
+    }
+
+    // Hide navbar on scroll down, show on scroll up
+    if (currentScrollY > lastScrollY) {
+        navbar.style.transform = 'translateY(-100%)'; // Hide
+    } else {
+        navbar.style.transform = 'translateY(0)'; // Show
+    }
+
+    lastScrollY = currentScrollY;
+});
+
+    // Navbar Collapse Animation (Slide Down/Up)
+    const navbarToggler = document.querySelector('.navbar-toggler');
+    const navbarCollapse = document.querySelector('.collapse');
+    navbarToggler.addEventListener('click', () => {
+        if (!navbarCollapse.classList.contains('show')) {
+            navbarCollapse.style.height = '0';
+            navbarCollapse.style.transition = 'height 0.3s ease-out';
+            navbarCollapse.style.height = navbarCollapse.scrollHeight + 'px'; // Open
+        } else {
+            navbarCollapse.style.height = '0'; // Close
+            setTimeout(() => {
+                navbarCollapse.style.height = ''; // Reset height for Bootstrap functionality
+            }, 300);
+        }
+    });
+</script>
 
     <!-- Hero Section -->
     <div id="hero-carousel" class="carousel slide hero-carousel" data-bs-ride="carousel">
@@ -143,71 +275,241 @@
     </div>
 
     <!-- Info Section -->
-    <section id="info" class="py-5">
-        <div class="container">
-            <div class="text-center mb-4">
-                <h2>Why Modernism?</h2>
-                <p class="text-muted">Explore the beauty of modern design.</p>
+<section id="info" class="py-5" style="background: linear-gradient(135deg, #f8f9fa, #e9ecef);">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 style="font-size: 2.5rem; font-weight: bold; color: #343a40;">Why Modernism?</h2>
+            <p class="text-muted" style="font-size: 1.1rem;">Explore the beauty of modern design.</p>
+        </div>
+        <div class="row g-4">
+            <!-- Card 1: Sophisticated Aesthetics -->
+            <div class="col-md-4">
+                <div class="info-card p-4 text-center position-relative" style="background: #ffffff; border-radius: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); transition: transform 0.3s, box-shadow 0.3s;">
+                    <!-- Animated Icon -->
+                    <div class="icon-container mb-3" style="background: linear-gradient(135deg, #007bff, #66b2ff); padding: 15px; border-radius: 50%; display: inline-block; animation: pulse 2s infinite;">
+                        <i class="fas fa-paint-brush fa-2x text-white"></i>
+                    </div>
+                    <h5 style="font-weight: bold; color: #343a40;">Sophisticated Aesthetics</h5>
+                    <p class="text-muted">Modernistic website themes combine bold typography, dynamic visuals, and gradient color schemes for a polished and cutting-edge look.</p>
+                    <div class="info-hover-effect"></div>
+                </div>
             </div>
-            <div class="row g-4">
-                <!-- Card 1: Sophisticated Aesthetics -->
-                <div class="col-md-4">
-                    <div class="info-card p-4 text-center bg-white">
-                        <!-- Icon: Paint Brush -->
-                        <i class="fas fa-paint-brush fa-3x mb-3 text-primary"></i>
-                        <h5>Sophisticated Aesthetics</h5>
-                        <p>Modernistic website themes combine contemporary design elements like bold typography, dynamic visuals, and gradient color schemes to create a polished and cutting-edge look.</p>
+
+            <!-- Card 2: Innovative Interactivity -->
+            <div class="col-md-4">
+                <div class="info-card p-4 text-center position-relative" style="background: #ffffff; border-radius: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); transition: transform 0.3s, box-shadow 0.3s;">
+                    <!-- Animated Icon -->
+                    <div class="icon-container mb-3" style="background: linear-gradient(135deg, #ffc107, #ffd966); padding: 15px; border-radius: 50%; display: inline-block; animation: pulse 2s infinite;">
+                        <i class="fas fa-magic fa-2x text-white"></i>
                     </div>
+                    <h5 style="font-weight: bold; color: #343a40;">Innovative Interactivity</h5>
+                    <p class="text-muted">Features like animations, micro-interactions, and seamless transitions enhance user engagement and provide a unique browsing experience.</p>
+                    <div class="info-hover-effect"></div>
                 </div>
-                <!-- Card 2: Innovative Interactivity -->
-                <div class="col-md-4">
-                    <div class="info-card p-4 text-center bg-white">
-                        <!-- Icon: Magic Wand -->
-                        <i class="fas fa-magic fa-3x mb-3 text-warning"></i>
-                        <h5>Innovative Interactivity</h5>
-                        <p>Themes like these often include advanced features such as animations, micro-interactions, and seamless transitions, enhancing user engagement and delivering a unique browsing experience.</p>
+            </div>
+
+            <!-- Card 3: Functionality Meets Style -->
+            <div class="col-md-4">
+                <div class="info-card p-4 text-center position-relative" style="background: #ffffff; border-radius: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); transition: transform 0.3s, box-shadow 0.3s;">
+                    <!-- Animated Icon -->
+                    <div class="icon-container mb-3" style="background: linear-gradient(135deg, #28a745, #70db89); padding: 15px; border-radius: 50%; display: inline-block; animation: pulse 2s infinite;">
+                        <i class="fas fa-mobile-alt fa-2x text-white"></i>
                     </div>
-                </div>
-                <!-- Card 3: Functionality Meets Style -->
-                <div class="col-md-4">
-                    <div class="info-card p-4 text-center bg-white">
-                        <!-- Icon: Mobile Screen -->
-                        <i class="fas fa-mobile-alt fa-3x mb-3 text-success"></i>
-                        <h5>Functionality Meets Style</h5>
-                        <p>With a focus on responsive design and intuitive layouts, modernistic themes ensure compatibility across devices while maintaining a visually striking and user-friendly interface.</p>
-                    </div>
+                    <h5 style="font-weight: bold; color: #343a40;">Functionality Meets Style</h5>
+                    <p class="text-muted">Responsive design ensures compatibility across devices while maintaining a visually striking and user-friendly interface.</p>
+                    <div class="info-hover-effect"></div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
+<style>
+    /* Card Hover Effects */
+    .info-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Icon Pulse Animation */
+    @keyframes pulse {
+        0%, 100% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.1);
+        }
+    }
+
+    /* Hover Glow Effect */
+    .info-hover-effect {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 123, 255, 0.2);
+        border-radius: 10px;
+        opacity: 0;
+        z-index: -1;
+        transition: opacity 0.3s;
+    }
+
+    .info-card:hover .info-hover-effect {
+        opacity: 1;
+    }
+
+    /* Container Shadow */
+    #info {
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+</style>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-5">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <div class="contact-section">
-                        <h3>Contact Us</h3>
-                        <form>
-                            <div class="mb-3">
-                                <input type="text" class="form-control" placeholder="Your Name" required>
-                            </div>
-                            <div class="mb-3">
-                                <input type="email" class="form-control" placeholder="Your Email" required>
-                            </div>
-                            <div class="mb-3">
-                                <textarea class="form-control" rows="4" placeholder="Your Message" required></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-primary w-100">Send Message</button>
-                        </form>
-                    </div>
-                </div>
-                <div class="col-lg-6 text-center">
-                    <img src="img/alina-grubnyak-R84Oy89aNKs-unsplash.jpg" class="img-fluid rounded" alt="Contact Image">
+  <!-- Contact Section -->
+<section id="contact" class="py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <div class="contact-section" style="padding: 20px; border: 1px solid #ddd; border-radius: 10px; background-color: #f8f9fa;">
+                    <h3 style="margin-bottom: 20px; text-align: center;">Contact Us</h3>
+                    <form id="modern-contact-form">
+                        <!-- Name Field -->
+                        <div class="mb-4">
+                            <label for="name" class="modern-label">Your Name</label>
+                            <input type="text" id="name" class="form-control modern-input" placeholder="John Doe" required>
+                        </div>
+
+                        <!-- Email Field -->
+                        <div class="mb-4">
+                            <label for="email" class="modern-label">Your Email</label>
+                            <input type="email" id="email" class="form-control modern-input" placeholder="example@email.com" required>
+                        </div>
+
+                        <!-- Dropdown: How Can We Help -->
+                        <div class="mb-4">
+                            <label for="help" class="modern-label">How Can We Help You? <span class="text-muted">(please select an option from dropdown)</span></label>
+                            <select id="help" class="form-control modern-dropdown" required>
+                                <option value="" disabled selected>Select an option</option>
+                                <option value="support">Support</option>
+                                <option value="sales">Sales Inquiry</option>
+                                <option value="feedback">Feedback</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <!-- Dropdown: Preferred Contact Method -->
+                        <div class="mb-4">
+                            <label for="contact-method" class="modern-label">Preferred Contact Method <span class="text-muted">(please select an option from dropdown)</span></label>
+                            <select id="contact-method" class="form-control modern-dropdown" required>
+                                <option value="" disabled selected>Select an option</option>
+                                <option value="email">Email</option>
+                                <option value="phone">Phone</option>
+                                <option value="chat">Live Chat</option>
+                            </select>
+                        </div>
+
+                        <!-- Message Field -->
+                        <div class="mb-4">
+                            <label for="message" class="modern-label">Your Message</label>
+                            <textarea id="message" class="form-control modern-input" rows="4" placeholder="Write your message here..." required></textarea>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn modern-btn w-100">Send Message</button>
+                        <p id="progress-feedback" style="text-align: center; margin-top: 15px; font-size: 14px; color: #6c757d; display: none;">Submitting your message...</p>
+                    </form>
                 </div>
             </div>
+            <div class="col-lg-6 text-center">
+                <img src="img/alina-grubnyak-R84Oy89aNKs-unsplash.jpg" class="img-fluid rounded" alt="Contact Image">
+            </div>
         </div>
-    </section>
+    </div>
+</section>
+
+<script>
+    // Show submission progress and modern interactive feedback
+    document.getElementById('modern-contact-form').addEventListener('submit', function (e) {
+        e.preventDefault(); // Prevent actual submission
+        const progressFeedback = document.getElementById('progress-feedback');
+        progressFeedback.style.display = 'block';
+        
+        // Simulate a submission delay
+        setTimeout(() => {
+            alert('Thank you for reaching out! We will get back to you shortly.');
+            progressFeedback.style.display = 'none';
+        }, 2000);
+    });
+</script>
+
+<style>
+    /* Modern Input Styles */
+    .modern-input, .modern-dropdown {
+        width: 100%;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        padding: 15px;
+        font-size: 16px;
+        transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .modern-input:focus, .modern-dropdown:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+        outline: none;
+    }
+
+    /* Floating Label Styles */
+    .modern-label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+        color: #495057;
+    }
+
+    /* Dropdown Styles */
+    .modern-dropdown {
+        background-color: #fff;
+        color: #6c757d;
+    }
+
+    .modern-dropdown option {
+        color: #000;
+    }
+
+    /* Modern Button Styles */
+    .modern-btn {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 12px 20px;
+        font-size: 18px;
+        font-weight: bold;
+        border-radius: 8px;
+        transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .modern-btn:hover {
+        background-color: #0056b3;
+        transform: translateY(-2px);
+    }
+
+    .modern-btn:active {
+        transform: scale(0.98);
+    }
+
+    /* Tooltip Styles */
+    .text-muted {
+        font-size: 12px;
+        color: #6c757d;
+    }
+
+    /* Container Shadow */
+    .contact-section {
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+</style>
 
     <!-- Footer -->
     <!-- <footer class="footer text-center">
