@@ -49,7 +49,10 @@ button:hover {
 
 /* Cookie Banner and Settings Menu */
 .cookie-banner, .settings-menu {
-    max-width: 500px;
+    width: 90%; /* Make it responsive to viewport width */
+    max-width: 500px; /* Limit the maximum width */
+    height: auto; /* Automatically adjust height */
+    max-height: 80vh; /* Limit the maximum height to 80% of viewport */
     padding: 20px;
     background-color: white;
     border: 1px solid #ddd;
@@ -63,6 +66,8 @@ button:hover {
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 9999; /* Ensure the banner is above other content */
+    overflow-y: auto; /* Enable scrolling if content exceeds height */
+    box-sizing: border-box; /* Include padding and border in dimensions */
 }
 
 /* Banner Heading */
@@ -81,6 +86,7 @@ button:hover {
     font-weight: 400; /* Regular weight for paragraphs */
     margin: 10px 0;
     color: #666;
+    word-wrap: break-word; /* Ensure long text breaks properly */
 }
 
 /* Actions Section (Buttons within Banner and Settings Menu) */
@@ -90,13 +96,6 @@ button:hover {
     justify-content: center;
     gap: 10px;
     margin-top: 15px;
-}
-
-/* Ensure the Parent Container Prevents Overflow */
-.cookie-banner, .settings-menu {
-    overflow: hidden; /* Prevent any overflow */
-    word-wrap: break-word; /* Break long text properly */
-    box-sizing: border-box; /* Ensure padding and border are included in the size */
 }
 
 /* Specific Button Colors for Banner */
@@ -187,6 +186,7 @@ input:checked + .slider:before {
 .hero-carousel img {
     height: 60vh;
     object-fit: cover;
+    max-width: 100%; /* Ensure images are responsive */
 }
 
 /* Info Card Styles */
@@ -222,4 +222,27 @@ input:checked + .slider:before {
 
 .footer a:hover {
     text-decoration: underline;
+}
+
+/* MEDIA QUERY FOR SMALL SCREENS */
+@media (max-width: 768px) {
+    .cookie-banner, .settings-menu {
+        width: 95%; /* Adjust to fit smaller screens */
+        max-width: none; /* Remove width limit for mobile */
+        max-height: 90vh; /* Adjust height for better use of screen space */
+        padding: 15px;
+    }
+
+    .cookie-banner h2, .settings-menu h2 {
+        font-size: 1.2rem; /* Reduce font size for headings */
+    }
+
+    .cookie-banner p, .settings-menu p {
+        font-size: 0.9rem; /* Adjust text size for better readability */
+    }
+
+    .actions {
+        flex-direction: column; /* Stack buttons vertically */
+        gap: 5px; /* Reduce gap between buttons */
+    }
 }
