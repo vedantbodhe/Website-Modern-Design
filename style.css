@@ -27,6 +27,8 @@ button {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.2s ease;
+    max-width: 100%; /* Prevent buttons from growing too wide */
+    flex: 1;
 }
 
 button:hover {
@@ -84,9 +86,17 @@ button:hover {
 /* Actions Section (Buttons within Banner and Settings Menu) */
 .actions {
     display: flex;
+    flex-wrap: wrap; /* Allow buttons to wrap to the next line if necessary */
     justify-content: center;
     gap: 10px;
     margin-top: 15px;
+}
+
+/* Ensure the Parent Container Prevents Overflow */
+.cookie-banner, .settings-menu {
+    overflow: hidden; /* Prevent any overflow */
+    word-wrap: break-word; /* Break long text properly */
+    box-sizing: border-box; /* Ensure padding and border are included in the size */
 }
 
 /* Specific Button Colors for Banner */
